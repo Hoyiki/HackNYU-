@@ -28,18 +28,20 @@ def teacher():
 
     while True:
 
-    	a=s.recvfrom(2048)
+    	a,address=s.recvfrom(2048)
     	a=a.decode()
     	if a=='y':
     		print('Someone is Confused!')
 
 def main():
 
-	teacher_address=
+	teacher_address=('172.29.153.48',12343)
 
-	c=input('Student : s \n Teacher : t')
+	c=input('Student : s\nTeacher : t')
 	if c =='s':
 		student(teacher_address)
 	if c=='t':
 		teacher()
+
+main()
 
