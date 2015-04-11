@@ -1,4 +1,5 @@
 # HackNYU-
+<<<<<<< HEAD
 _____________________________________________
 Git Tutorial
 
@@ -12,3 +13,11 @@ git pull
 _____________________________________________
 
 
+=======
+bla bla
+lalalalalalalalalalala
+trying
+123
+I can't do this
+whaaaaaaaatttttttttttttttt
+>>>>>>> 4032344952c31fbf314936710d7e2dad9126deab
