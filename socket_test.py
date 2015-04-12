@@ -1,4 +1,8 @@
 import socket
+import threading
+import datetime
+from threading import Timer
+
 
 def student(teacher_address):
 
@@ -25,23 +29,32 @@ def teacher():
     s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     
     s.bind( (HOST, PORT) )
+    s.settimeout(1)
 
     while True:
+        
 
-    	a,address=s.recvfrom(2048)
-    	a=a.decode()
-    	if a=='y':
-    		print('Someone is Confused!')
+        endTime = datetime.datetime.now() + datetime.timedelta(seconds=10)
 
-def main():
+        x=0
 
-	teacher_address=('172.29.153.48',12343)
+        #fix the number of messages received in 
+        while datetime.datetime.now() <= endTime:
+            try:
+                a,address=s.recvfrom(2048)
+                a=a.decode()   
+                if a=='y':
+                    print('Someone is Confused!')
+                    x+=1
+            except socket.timeout:
+                continue
 
-	c=input('Student : s\nTeacher : t')
-	if c =='s':
-		student(teacher_address)
-	if c=='t':
-		teacher()
+        print(x)
+    
+def send_message(s):
+    s.sendto('y'.encode(),('172.29.153.48',12343))
 
-main()
+
+
+teacher()
 
