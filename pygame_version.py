@@ -108,7 +108,7 @@ class Main:
    def Update(self,surface):
       surface.fill((150,200,150))
       # draw background here.
-      background_image = pygame.image.load(r'C:\Users\Admin\Downloads\wallpaper-full-hd-1080-x-1920-smartphone-alber-einstein-funny.jpg').convert()
+      background_image = pygame.image.load(r'C:\Users\Admin\Downloads\ein.jpg').convert()
       screen = pygame.display.set_mode([800,600])
       screen.blit(background_image , [50,20])
       
