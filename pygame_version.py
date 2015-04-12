@@ -1,6 +1,7 @@
 import pygame
 pygame.init()
 import socket
+import pygame.freetype
  
 # handle pygame basic window
 # handle event loop
@@ -94,9 +95,9 @@ class Button:
 class Main:
    def __init__(self):
    
-      self.button3 = Button('I am confused!',(320,290),color=(255,255,255),hilight=(200,200,0))
-      
-      self.font = pygame.font.Font(None,18)
+      self.button3 = Button('I am confused!',(300,390),color=(255,255,255),hilight=(200,200,0))
+      pygame.freetype.init()
+      self.font = pygame.freetype.SysFont("comicsansms", 18 , bold = True , italic=False)
       self.push = None
 
 
@@ -107,10 +108,10 @@ class Main:
    def Update(self,surface):
       surface.fill((150,200,150))
       # draw background here.
-      background_image = pygame.image.load(r'C:\Users\Admin\Downloads\humor-bus_00300073.jpg').convert()
-      screen = pygame.display.set_mode([0,0])
-      screen.blit(background_image , [0,0])
-      background_image = pygame.transform.scale(background_image, (800, 600))
+      background_image = pygame.image.load(r'C:\Users\Admin\Downloads\wallpaper-full-hd-1080-x-1920-smartphone-alber-einstein-funny.jpg').convert()
+      screen = pygame.display.set_mode([800,600])
+      screen.blit(background_image , [50,20])
+      
       self.button3.Draw(surface)
       
       if self.push is not None:
