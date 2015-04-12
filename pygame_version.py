@@ -40,14 +40,14 @@ class Window:
  
 # hilight clickable box.         
 class Button:
-   def __init__(self,text,pos,size=(100,30),color=(0,0,200),hilight=(0,200,200)):
+   def __init__(self,text,pos,size=(160,30),color=(0,0,200),hilight=(0,200,200)):
       self.normal = color
       self.hilight = hilight
       self.rect = pygame.Rect(pos,size)
       self.mouseover = False
       self.text = text
-      self.font = pygame.font.Font(None,24)
-      self.text_image = self.font.render(text,1,(255,255,255))
+      self.font = pygame.font.Font(None,30)
+      self.text_image = self.font.render(text,1,(0,0,0))
       w,h = self.font.size(text) # size of font image
       self.text_pos = (pos[0] + size[0] / 2 - w / 2,pos[1] + size[1] / 2 - h / 2) # center text
       self.buttondown = False
@@ -87,14 +87,14 @@ class Button:
 
       if self.buttondown and self.mouseover:
          self.buttondown = False
-         frame.push = frame.font.render('Click ' + self.text,1,(100,0,200))
+         frame.push = frame.font.render('Submitted ' + self.text,1,(0,0,0))
          frame.s.sendto('y'.encode(),('172.29.153.48',12343))
          #print('You click %s' % (self.text))
  
 class Main:
    def __init__(self):
    
-      self.button3 = Button('Button 3',(300,50),color=(0,200,0),hilight=(200,200,0))
+      self.button3 = Button('I am confused!',(320,290),color=(255,255,255),hilight=(200,200,0))
       
       self.font = pygame.font.Font(None,18)
       self.push = None
@@ -107,7 +107,10 @@ class Main:
    def Update(self,surface):
       surface.fill((150,200,150))
       # draw background here.
-  
+      background_image = pygame.image.load(r'C:\Users\Admin\Downloads\humor-bus_00300073.jpg').convert()
+      screen = pygame.display.set_mode([0,0])
+      screen.blit(background_image , [0,0])
+      background_image = pygame.transform.scale(background_image, (800, 600))
       self.button3.Draw(surface)
       
       if self.push is not None:
@@ -125,7 +128,7 @@ class Main:
          self.button3.Update(event)
                
 if __name__ == '__main__':
-   window = Window('Basic Pygame Window',(800,600)) 
+   window = Window('Student aid',(800,600)) 
    frame = Main()
    frame.s.bind(('', 12341))
    window.SetPage(frame.Update,frame.Event)
